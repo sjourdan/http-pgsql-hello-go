@@ -7,6 +7,7 @@ import (
 )
 
 const (
+	// Port to listen to
 	Port = ":8080"
 )
 
