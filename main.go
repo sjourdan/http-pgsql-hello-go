@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -12,7 +13,11 @@ const (
 )
 
 func serveDynamic(w http.ResponseWriter, r *http.Request) {
-	response := "The time is now " + time.Now().String()
+	name, err := os.Hostname()
+	if err != nil {
+		panic(err)
+	}
+	response := "The time is now " + time.Now().String() + "\nRunning on " + name
 	fmt.Fprintln(w, response)
 }
 
